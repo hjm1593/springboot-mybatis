@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="environment.project.repository.UserRepository">
+    <select id="getUsers" resultType="environment.project.model.UserDTO">
+        SELECT * FROM users;
+    </select>
+    <insert id="insertUser" parameterType="environment.project.model.UserDTO" keyProperty="idx">
+        INSERT INTO users(userid,password) VALUES (#{userid}, #{password})
+    </insert>
+    <update id="updateUser" parameterType="environment.project.model.UserDTO">
+        UPDATE users SET password = #{password} WHERE userid = #{userid}
+    </update>
+    <delete id="deleteUser" parameterType="environment.project.model.UserDTO">
+        DELETE FROM users WHERE userid = #{userid}
+    </delete>
+</mapper>
